@@ -25,3 +25,11 @@ class Catalogo:
     
     def ordenar_por_nota(self):
         self.filmes.sort(key=lambda filme: filme.nota, reverse=True)
+
+    def remover_filme(self, titulo):
+        for filme in self.filmes:
+            if filme.titulo.lower() == titulo.lower():
+                self.filmes.remove(filme)
+                return True
+
+        return False
