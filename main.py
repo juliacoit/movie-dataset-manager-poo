@@ -16,7 +16,10 @@ def mostrar_menu():
     print("1 - Listar filmes")
     print("2 - Buscar filme por título")
     print("3 - Adicionar filme")
-    print("4 - Salvar alterações")
+    print("4 - Remover Filme")
+    print("5 - Filtrar por gênero")
+    print("6 - Ordenar por nota")
+    print("7 - Salvar alterações")
     print("0 - Sair")
 
 
@@ -50,6 +53,36 @@ while True:
         print("Filme adicionado com sucesso!")
 
     elif opcao == "4":
+        titulo = input("Digite o título do filme para remover: ")
+
+        removido = catalogo.remover_filme(titulo)
+
+        if removido:
+            print("Filme removido com sucesso!")
+        else:
+            print("Filme não encontrado.")    
+
+    elif opcao == "5":
+        genero = input("Digite o gênero: ")
+
+        resultados = catalogo.filtrar_por_genero(genero)
+
+        if resultados:
+            print(f"\nFilmes do gênero {genero}:\n")
+
+            for filme in resultados:
+                print(filme.exibir())
+
+        else:
+            print("Nenhum filme encontrado.")
+
+    elif opcao == "6":
+        catalogo.ordenar_por_nota()
+
+        print("\nFilmes ordenados por nota:\n")
+        catalogo.listar_filmes()
+
+    elif opcao == "7":
         salvar_filmes(CAMINHO, catalogo.filmes)
         print("Alterações salvas com sucesso!")
 

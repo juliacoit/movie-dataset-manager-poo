@@ -14,3 +14,14 @@ class Catalogo:
             if filme.titulo.lower() == titulo.lower():
                 return filme
         return None
+    
+    def filtrar_por_genero(self, genero):
+        encontrados = []
+
+        for filme in self.filmes:
+            if filme.genero.lower() == genero.lower():
+                encontrados.append(filme)
+        return encontrados
+    
+    def ordenar_por_nota(self):
+        self.filmes.sort(key=lambda filme: filme.nota, reverse=True)
